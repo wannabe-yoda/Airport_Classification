@@ -21,12 +21,13 @@ cd Airport_Classification
 
 # Pull the large files (weights and dataset)
 git lfs pull
+```
 
-Step 2: Install Dependencies
+### Step 2: Install Dependencies
 
 This project requires Python 3.8+ and several deep learning libraries. It is recommended to use a virtual environment or a Conda environment.
-bash
 
+```bash
 # Core Deep Learning Framework
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 
@@ -38,23 +39,25 @@ pip install numpy tifffile scikit-learn pyyaml tqdm
 
 # Evaluation Metrics
 pip install torchmetrics
+```
 
-🏋️ Training & Benchmarking
+## 🏋️ Training & Benchmarking
 
 Once your environment is set up, you can begin training. The repository provides two primary configurations: Multiclass (3-class) and Binary (2-class).
-Step 3: Run the Training Script
+
+### Step 3: Run the Training Script
 
 To launch a training run, use the --config flag followed by the path to your desired configuration file.
 
 For 3-Class Training (Airports vs. Bus Stands vs. Railway Stations):
-bash
-
+```bash
 python train.py --config config_3classes.yaml
-
+```
 For 2-Class Training (Airports vs. Non-Airport Hubs):
-bash
 
+```bash
 python train.py --config config_2classes.yaml
+```bash
 
 Configuration Overview
 
@@ -91,7 +94,7 @@ Plain Text:
     Prakhya, Sai Shruti, and Uttam Kumar. "FLASH-SAR: Fast Learning Self-supervised Hierarchical Architecture for SAR." Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision. 2026.
 
 BibTeX:
-bibtex
+```bash
 
 @inproceedings{prakhya2026flash,
   title={FLASH-SAR: Fast Learning Self-supervised Hierarchical Architecture for SAR},
@@ -100,4 +103,5 @@ bibtex
   pages={1382--1392},
   year={2026}
 }
+```
 
