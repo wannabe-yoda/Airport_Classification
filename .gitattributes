@@ -1,0 +1,2 @@
+*.pth filter=lfs diff=lfs merge=lfs -text
+AirportsClassification/** filter=lfs diff=lfs merge=lfs -text

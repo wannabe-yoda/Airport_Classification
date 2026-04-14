@@ -1,0 +1,58 @@
+run_name: "FLASHSAR_Airport_Binary_LP"
+output_dir: "experiments/FLASHSAR_Binary_Benchmarks"
+
+data:
+  root_dir: "AirportsClassification" 
+  num_classes: 2 
+  binary: true   
+  input_size: 224 
+  train_split: 0.8 
+  num_workers: 4
+
+model:
+  architecture: 'SwinClassifier'
+  input_channels: 2
+  pretrained_path: 'best_model_full.pth'
+
+
+fine_tune_strategy: 'frozen'
+
+frozen:
+  epochs: 100
+  batch_size: 32
+  head_lr: 1.0e-3
+  weight_decay: 0.01
+
+full:
+  epochs: 100
+  batch_size: 32
+  head_lr: 1.0e-3
+  backbone_lr: 1.0e-5
+  weight_decay: 0.01
+
+lora:
+  r: 8
+  lora_alpha: 16
+  target_modules: ['query', 'value']
+  lora_dropout: 0.05
+  bias: 'none'
+  epochs: 100
+  batch_size: 32
+  learning_rate: 1.0e-3
+  weight_decay: 0.01
+
+partial_ft:
+  epochs: 100
+  batch_size: 32
+  head_lr: 1.0e-3
+  backbone_lr: 1.0e-5
+  weight_decay: 0.01
+  layers_to_freeze:
+    - 'encoder.embeddings.'
+    - 'encoder.encoder.layers.0.'
+    - 'encoder.encoder.layers.1.'
+
+training:
+  warmup_epochs: 5
+  amp_dtype: "bfloat16" 
+  clip_grad_norm: 1.0
