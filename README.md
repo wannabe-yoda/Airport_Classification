@@ -57,17 +57,17 @@ For 2-Class Training (Airports vs. Non-Airport Hubs):
 
 ```bash
 python train.py --config config_2classes.yaml
-```bash
+```
 
 Configuration Overview
 
 The .yaml files manage the data splits, model parameters, and training strategies. By default, both are set to Linear Probing (frozen).
-Feature	config_3classes.yaml	config_2classes.yaml
-Num Classes	3	2
-Logic	Individual POI Recognition	Airport vs. Transportation Hubs
-Default Strategy	Frozen Backbone	Frozen Backbone
-Input Channels	2 (VV, VH)	2 (VV, VH)
-Fine-Tuning Strategies
+| Feature | `config_3classes.yaml` | `config_2classes.yaml` |
+|---|---|---|
+| Num Classes | 3 | 2 |
+| Logic | Individual POI Recognition | Airport vs. Transportation Hubs |
+| Default Strategy | Frozen Backbone | Frozen Backbone |
+| Input Channels | 2 (VV, VH) | 2 (VV, VH) |
 
 Modify the fine_tune_strategy key in the config files to change the training behavior:
 
@@ -77,7 +77,7 @@ Modify the fine_tune_strategy key in the config files to change the training beh
     partial_ft: Freezes early layers to preserve low-level SAR features.
 
 
-📊 Results & Logging
+## 📊 Results & Logging
 
 Results are saved to the experiments/ directory:
 
@@ -85,13 +85,9 @@ Results are saved to the experiments/ directory:
     results.txt — Final report with Global Accuracy, F1-Macro, and Per-Class Accuracy.
     final_model.pth — The saved weights of your fine-tuned model.
 
-📜 License & Citation
+## 📜 License & Citation
 
 This repository is for research purposes. If you use the dataset or the FLASH-SAR checkpoint, please cite the corresponding work.
-
-Plain Text:
-
-    Prakhya, Sai Shruti, and Uttam Kumar. "FLASH-SAR: Fast Learning Self-supervised Hierarchical Architecture for SAR." Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision. 2026.
 
 BibTeX:
 ```bash
